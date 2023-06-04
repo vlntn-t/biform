@@ -19,6 +19,7 @@ To install and run the project, open your terminal and enter the following comma
 ```bash
 python3 biform.py init
 python3 biform.py pull
+python3 biform.py plan
 python3 biform.py apply
 ```
 
