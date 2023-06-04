@@ -31,7 +31,3 @@ python3 biform.py apply
 "APP_IDS": ["4efdc0ca-fb74-4728-9ea4-6b38cc0ea3b6"]
 }
 ```
-
-```
-
-```
