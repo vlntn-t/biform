@@ -1,0 +1,8 @@
+{
+  "TENANT": "https://5llri6syh3zllpg.eu.qlikcloud.com/",
+  "API_KEY": "eyJhbGciOiJFUzM4NCIsImtpZCI6IjFiM2MzMWQ1LTUxYTktNGE5OS04MmU2LTJkMjllNDJiZTIzOCIsInR5cCI6IkpXVCJ9.eyJzdWJUeXBlIjoidXNlciIsInRlbmFudElkIjoiTE5hd2ZBNkJlSFVmaUluRVFsekQwbFpzMEw2QUpBV2MiLCJqdGkiOiIxYjNjMzFkNS01MWE5LTRhOTktODJlNi0yZDI5ZTQyYmUyMzgiLCJhdWQiOiJxbGlrLmFwaSIsImlzcyI6InFsaWsuYXBpL2FwaS1rZXlzIiwic3ViIjoiNjM5NWNmYWVhNDkyOGRlOTQxNWFjNzZjIn0.YO2EwY90ikS2EUY15-QWkiWQQTXcbAfrT4m1vOMLwGFU9a3lL8N5TD4-YgBx7kqs8v7QcfZtWlvtRDaAsFRz1iVBgNcheA7LnE4Bms_He197k__uKQ1dJr_DIQ10nt4N",
+  "APP_IDS": [
+    "4efdc0ca-fb74-4728-9ea4-6b38cc0ea3b6",
+    "0f5aeaaa-c744-49b3-8b6b-210c48d54f15"
+  ]
+}

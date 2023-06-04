@@ -1,0 +1,77 @@
+[
+    {
+        "qInfo": {
+            "qId": "41f524b1-b4e7-4641-968f-34e582229122",
+            "qType": "sheet"
+        },
+        "qMetaDef": {
+            "title": "Mein neues Arbeitsblatt",
+            "description": ""
+        },
+        "rank": -1,
+        "thumbnail": {
+            "qStaticContentUrlDef": {}
+        },
+        "columns": 24,
+        "rows": 12,
+        "cells": [
+            {
+                "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 100,
+                    "height": 100
+                },
+                "col": 0,
+                "colspan": 24,
+                "name": "aLTWj",
+                "row": 0,
+                "rowspan": 12,
+                "smartGrid": {
+                    "rowIdx": 0,
+                    "itemIdx": 0,
+                    "item": {
+                        "width": 1
+                    }
+                },
+                "type": "barchart"
+            }
+        ],
+        "qChildListDef": {
+            "qData": {
+                "title": "/title"
+            }
+        },
+        "gridMode": "simpleEdit",
+        "layoutOptions": {
+            "extendable": false
+        }
+    },
+    {
+        "qInfo": {
+            "qId": "e00f93e4-9d7d-41a2-92c2-5f8427e7e496",
+            "qType": "sheet"
+        },
+        "qMetaDef": {
+            "title": "My new sheet",
+            "description": "This is a new sheet"
+        },
+        "rank": 0,
+        "thumbnail": {
+            "qStaticContentUrlDef": {}
+        },
+        "columns": 24,
+        "rows": 12,
+        "cells": [],
+        "qChildListDef": {
+            "qData": {
+                "title": "/title"
+            }
+        },
+        "customRowBase": 12,
+        "gridResolution": "small",
+        "layoutOptions": {
+            "mobileLayout": "LIST"
+        }
+    }
+]

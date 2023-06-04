@@ -1,0 +1,27 @@
+[
+    {
+        "qInfo": {
+            "qId": "svgpPp",
+            "qType": "dimension"
+        },
+        "qDim": {
+            "qGrouping": "N",
+            "qFieldDefs": [
+                "City"
+            ],
+            "qFieldLabels": [
+                "City"
+            ],
+            "title": "City",
+            "coloring": {
+                "changeHash": "0.35826231767896743",
+                "hasValueColors": false
+            }
+        },
+        "qMetaDef": {
+            "title": "City",
+            "description": "",
+            "tags": []
+        }
+    }
+]
