@@ -22,13 +22,3 @@ python3 biform.py pull
 python3 biform.py plan
 python3 biform.py apply
 ```
-
-**config.json** file should be created in the root directory of the project. It should contain the following information:
-
-```
-{
-"TENANT": "wss://5llri6syh3zllpg.eu.qlikcloud.com/app/",
-"API_KEY": "eyJhbGciOiJFUzM4NCIsImtpZCI6IjFiM2MzMWQ1LTUxYTktNGE5OS04MmU2LTJkMjllNDJiZTIzOCIsInR5cCI6IkpXVCJ9.eyJzdWJUeXBlIjoidXNlciIsInRlbmFudElkIjoiTE5hd2ZBNkJlSFVmaUluRVFsekQwbFpzMEw2QUpBV2MiLCJqdGkiOiIxYjNjMzFkNS01MWE5LTRhOTktODJlNi0yZDI5ZTQyYmUyMzgiLCJhdWQiOiJxbGlrLmFwaSIsImlzcyI6InFsaWsuYXBpL2FwaS1rZXlzIiwic3ViIjoiNjM5NWNmYWVhNDkyOGRlOTQxNWFjNzZjIn0.YO2EwY90ikS2EUY15-QWkiWQQTXcbAfrT4m1vOMLwGFU9a3lL8N5TD4-YgBx7kqs8v7QcfZtWlvtRDaAsFRz1iVBgNcheA7LnE4Bms_He197k\_\_uKQ1dJr_DIQ10nt4N",
-"APP_IDS": ["4efdc0ca-fb74-4728-9ea4-6b38cc0ea3b6"]
-}
-```
