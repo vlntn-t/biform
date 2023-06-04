@@ -54,7 +54,7 @@ def init_project():
     with open('biforms/state.json', 'w') as f:
         json.dump({
             'version': 1
-        }, f, indent=4)
+        }, f, indent=2)
 
     # Create README.md
     with open('biforms/README.md', 'w') as f:
@@ -67,7 +67,7 @@ def init_project():
         'APP_IDS': ['YOUR_APP_ID_1', 'YOUR_APP_ID_2']
     }
     with open('biforms/config.json', 'w') as f:
-        json.dump(config, f, indent=4)
+        json.dump(config, f, indent=2)
 
 
 def pull_project():
@@ -105,7 +105,7 @@ def pull_project():
 
         # Save all measure properties in a JSON file
         with open(f'biforms/{app_id}/measures.json', 'w') as f:
-            json.dump(all_measure_properties, f, indent=4)
+            json.dump(all_measure_properties, f, indent=2)
 
         # Pull all dimensions for each app
         print(f'Pulling master dimensions for app {app_id}')
@@ -132,7 +132,7 @@ def pull_project():
 
         # Save all dimension properties in a JSON file
         with open(f'biforms/{app_id}/dimensions.json', 'w') as f:
-            json.dump(all_dimension_properties, f, indent=4)
+            json.dump(all_dimension_properties, f, indent=2)
 
         # Pull all variables for each app
         print(f'Pulling variables for app {app_id}')
@@ -158,7 +158,7 @@ def pull_project():
 
         # Save all variable properties in a JSON file
         with open(f'biforms/{app_id}/variables.json', 'w') as f:
-            json.dump(all_variable_properties, f, indent=4)
+            json.dump(all_variable_properties, f, indent=2)
 
         # # Pull all sheets for each app
         # print(f'Pulling sheets for app {app_id}')
@@ -186,7 +186,7 @@ def pull_project():
 
         # # Save all sheet properties in a JSON file
         # with open(f'biforms/{app_id}/sheets.json', 'w') as f:
-        #     json.dump(all_sheet_properties, f, indent=4)
+        #     json.dump(all_sheet_properties, f, indent=2)
 
 
 def apply_project():

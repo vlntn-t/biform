@@ -5,14 +5,14 @@
       "qType": "variable"
     },
     "qMetaDef": {},
-    "qName": "BlaBla",
-    "qComment": "Bla",
+    "qName": "BlaBla1",
+    "qComment": "Bla1",
     "qNumberPresentation": {
       "qType": "U",
       "qnDec": 10,
       "qUseThou": 0
     },
-    "qDefinition": "Bla",
+    "qDefinition": "Bla1",
     "tags": []
   },
   {

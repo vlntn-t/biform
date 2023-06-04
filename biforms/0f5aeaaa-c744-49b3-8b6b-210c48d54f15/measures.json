@@ -1,50 +1,50 @@
 [
-    {
-        "qInfo": {
-            "qId": "szVdf",
-            "qType": "measure"
-        },
-        "qMeasure": {
-            "qLabel": "Deine Measue2",
-            "qDef": "Sum(City)",
-            "qGrouping": "N",
-            "qExpressions": [],
-            "qActiveExpression": 0,
-            "qNumFormat": {
-                "qType": "U",
-                "qnDec": 10,
-                "qUseThou": 0
-            },
-            "coloring": {}
-        },
-        "qMetaDef": {
-            "title": "Deine Measue2",
-            "description": "",
-            "tags": []
-        }
+  {
+    "qInfo": {
+      "qId": "szVdf",
+      "qType": "measure"
     },
-    {
-        "qInfo": {
-            "qId": "szVdg",
-            "qType": "measure"
-        },
-        "qMeasure": {
-            "qLabel": "Deine Measue",
-            "qDef": "count(City)",
-            "qGrouping": "N",
-            "qExpressions": [],
-            "qActiveExpression": 0,
-            "qNumFormat": {
-                "qType": "U",
-                "qnDec": 10,
-                "qUseThou": 0
-            },
-            "coloring": {}
-        },
-        "qMetaDef": {
-            "title": "Deine Measue",
-            "description": "",
-            "tags": []
-        }
+    "qMeasure": {
+      "qLabel": "Deine Measue2",
+      "qDef": "Sum(City)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Deine Measue2",
+      "description": "",
+      "tags": []
     }
+  },
+  {
+    "qInfo": {
+      "qId": "szVdg",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Deine Measue",
+      "qDef": "count(City)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Deine Measue",
+      "description": "",
+      "tags": []
+    }
+  }
 ]
