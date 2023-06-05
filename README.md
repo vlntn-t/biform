@@ -44,3 +44,8 @@ python3 biform.py plan
 # To apply the changes to the remote repository
 python3 biform.py apply
 ```
+
+## Built With
+
+- [Python](https://www.python.org/) - The programming language used
+- [Qlik CLI](https://qlik.dev/toolkits/qlik-cli/) - The CLI tool used to manage Qlik Sense applications
