@@ -6,8 +6,12 @@
     },
     "qDim": {
       "qGrouping": "N",
-      "qFieldDefs": ["Category"],
-      "qFieldLabels": ["BlaDim"],
+      "qFieldDefs": [
+        "Category"
+      ],
+      "qFieldLabels": [
+        "BlaDim"
+      ],
       "title": "BlaDim",
       "coloring": {
         "changeHash": "0.029894030072258326",

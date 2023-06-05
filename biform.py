@@ -188,6 +188,15 @@ def pull_project():
         # with open(f'biforms/{app_id}/sheets.json', 'w') as f:
         #     json.dump(all_sheet_properties, f, indent=2)
 
+        # Pull the script for each app (qlik app script get --app <appid/app_name>)
+        print(f'Pulling script for app {app_id}')
+        script = os.popen(
+            f'qlik app script get --app {app_id}').read()
+
+        # Save the script in a txt file
+        with open(f'biforms/{app_id}/script.qvs', 'w') as f:
+            f.write(script)
+
 
 def apply_project():
     # Read config.json
@@ -258,6 +267,13 @@ def apply_project():
         # qlik app variable set ./my-variables-glob-path.json
         os.system(
             f'qlik app variable set ./biforms/{app_id}/variables.json --app {app_id}')
+
+        # Apply the script for each app
+        print(f'Applying script for app {app_id}')
+
+        # qlik app script set ./my-script-glob-path.qvs (qlik app script set <path-to-script-file.qvs>)
+        os.system(
+            f'qlik app script set ./biforms/{app_id}/script.qvs --app {app_id}')
 
 
 init_parser.set_defaults(func=init_project)

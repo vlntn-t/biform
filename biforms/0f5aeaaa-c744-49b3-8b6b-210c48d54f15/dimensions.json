@@ -6,8 +6,12 @@
     },
     "qDim": {
       "qGrouping": "N",
-      "qFieldDefs": ["City"],
-      "qFieldLabels": ["City"],
+      "qFieldDefs": [
+        "City"
+      ],
+      "qFieldLabels": [
+        "City"
+      ],
       "title": "City",
       "coloring": {
         "changeHash": "0.35826231767896743",
