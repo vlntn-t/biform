@@ -1,10 +1,12 @@
 # BIForm
 
-BIForm is a powerful tool designed for managing BI applications declaratively.
+BIForm is a powerful CLI tool designed for managing BI applications and their configurations. It allows you to easily manage your BI applications and their configurations declaratively in a version control system (VCS) such as Git.
 
 Currently, BIForm supports the following BI applications:
 
-- [Qlik Sense](https://www.qlik.com/us/products/qlik-sense)
+- [x] [Qlik Sense](https://www.qlik.com/us/products/qlik-sense)
+- [ ] [Microsoft Power BI](https://powerbi.microsoft.com/)
+- [ ] [Tableau](https://www.tableau.com/)
 
 ## Getting Started
 
@@ -13,6 +15,8 @@ Follow the instructions below to get a copy of the project running on your local
 ### Prerequisites
 
 - Qlik Sense Cloud
+- Qlik Sense Cloud API key
+- Version Control such as GitHub or GitLab _(optional)_
 - Python 3.6 or higher
 
 ### Installing
