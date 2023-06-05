@@ -56,9 +56,9 @@ def init_project():
             'version': 1
         }, f, indent=2)
 
-    # Create README.md
-    with open('biforms/README.md', 'w') as f:
-        f.write("# Project Title\n\nProject description")
+    # # Create README.md
+    # with open('biforms/README.md', 'w') as f:
+    #     f.write("# Project Title\n\nProject description")
 
     # Create config.json with placeholders
     config = {
