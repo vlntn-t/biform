@@ -14,10 +14,10 @@ Follow the instructions below to get a copy of the project running on your local
 
 ### Prerequisites
 
-- Qlik Sense Cloud
+- A Qlik Sense Cloud tenant [Try for free](https://www.qlik.com/us/products/qlik-cloud)
 - Qlik Sense Cloud API key
 - Version Control such as GitHub or GitLab _(optional)_
-- Python 3.6 or higher
+- Python 3.6 or higher installed on your local machine
 
 ### Installing
 
