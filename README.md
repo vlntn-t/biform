@@ -50,6 +50,28 @@ python3 biform.py plan
 python3 biform.py apply
 ```
 
+### Scaffolding
+
+```
+└── bf/
+		├── main.py
+		├── state.json
+		├── config.json
+		├── README.md
+		└── applications/
+		        ├── app-id-1/
+		            ├── frontend/
+		            │   ├── objects.json
+		            │   ├── measures.json
+		            │   ├── dimensions.json
+		            │   └── ...
+		            ├── backend/
+		            │   ├── scripts.json
+		            │   ├── connections.json
+		            │   └── ...
+		            └── main.py
+```
+
 ## Built With
 
 - [Python](https://www.python.org/) - The programming language used
