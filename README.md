@@ -20,14 +20,9 @@ Follow the instructions below to get a copy of the project running on your local
 - Version Control such as GitHub or GitLab _(optional)_
 - Python 3.6 or higher installed on your local machine
 
-#### Mac
-
-- Install [Homebrew](https://brew.sh/)
-
 #### Windows
 
 - Install the Qlik CLI manually: https://github.com/qlik-oss/qlik-cli/releases
-- OR install [Chocolatey](https://chocolatey.org/)
 
 ### Installing
 

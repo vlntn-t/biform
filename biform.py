@@ -26,48 +26,79 @@ apply_parser = subparsers.add_parser(
 
 
 def init_project():
-    # TODO: check which OS the user is running
-    if os.system('brew -v') != 0:
-        os.system(
-            '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
-    else:
-        print('brew is already installed')
-        print(' ')
+    if os.name == 'posix':  # macOS or Linux
+        if os.system('brew -v') != 0:
+            os.system(
+                '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
+        else:
+            print('brew is already installed')
+            print(' ')
 
-    if os.system('qlik version') != 0:
-        os.system('brew tap qlik-oss/taps && brew install qlik-cli')
-    else:
-        print('qlik cli is already installed')
-        print(' ')
+        if os.system('qlik version') != 0:
+            os.system('brew tap qlik-oss/taps && brew install qlik-cli')
+        else:
+            print('qlik cli is already installed')
+            print(' ')
 
-    # qlik context init to set up the context
-    os.system('qlik context init')
-    # TODO: check if context is already set up
-    # TODO: get tenant and api key from user input and store in config.json
+        # qlik context init to set up the context
+        os.system('qlik context init')
+        # TODO: check if context is already set up
+        # TODO: get tenant and api key from user input and store in config.json
 
-    # qlik context ls
-    os.system('qlik context ls')
+        # qlik context ls
+        os.system('qlik context ls')
 
-    # Create biforms folder
-    os.mkdir('biforms')
-    # Create state.json
-    with open('biforms/state.json', 'w') as f:
-        json.dump({
-            'version': 1
-        }, f, indent=2)
+        # Create biforms folder
+        os.mkdir('biforms')
+        # Create state.json
+        with open('biforms/state.json', 'w') as f:
+            json.dump({
+                'version': 1
+            }, f, indent=2)
 
-    # Create README.md for documentation purposes
-    with open('biforms/README.md', 'w') as f:
-        f.write("# Project Title\n\nProject description")
+        # Create README.md for documentation purposes
+        with open('biforms/README.md', 'w') as f:
+            f.write("# Project Title\n\nProject description")
 
-    # Create config.json with placeholders
-    config = {
-        'TENANT': 'https://<tenant>.<region>.qlikcloud.com',
-        'API_KEY': 'YOUR_API_KEY',
-        'APP_IDS': ['YOUR_APP_ID_1', 'YOUR_APP_ID_2']
-    }
-    with open('biforms/config.json', 'w') as f:
-        json.dump(config, f, indent=2)
+        # Create config.json with placeholders
+        config = {
+            'TENANT': 'https://<tenant>.<region>.qlikcloud.com',
+            'API_KEY': 'YOUR_API_KEY',
+            'APP_IDS': ['YOUR_APP_ID_1', 'YOUR_APP_ID_2']
+        }
+        with open('biforms/config.json', 'w') as f:
+            json.dump(config, f, indent=2)
+
+    elif os.name == 'nt':  # Windows
+        # check if qlik cli is installed
+        if os.system('qlik version') != 0:
+            # qlik context init to set up the context
+            os.system('qlik context init')
+            # qlik context ls
+            os.system('qlik context ls')
+            # Create biforms folder
+            os.mkdir('biforms')
+            # Create state.json
+            with open('biforms/state.json', 'w') as f:
+                json.dump({
+                    'version': 1
+                }, f, indent=2)
+
+            # Create README.md for documentation purposes
+            with open('biforms/README.md', 'w') as f:
+                f.write("# Project Title\n\nProject description")
+
+            # Create config.json with placeholders
+            config = {
+                'TENANT': 'https://<tenant>.<region>.qlikcloud.com',
+                'API_KEY': 'YOUR_API_KEY',
+                'APP_IDS': ['YOUR_APP_ID_1', 'YOUR_APP_ID_2']
+            }
+            with open('biforms/config.json', 'w') as f:
+                json.dump(config, f, indent=2)
+
+        else:
+            print('Qlik CLI is not installed. Please install it from https://github.com/qlik-oss/qlik-cli/releases')
 
 
 def pull_project():
