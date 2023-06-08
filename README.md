@@ -42,7 +42,7 @@ python3 biform.py pull
 
 ```bash
 # To compare the local and remote repositories
-python3 biform.py plan
+python3 biform.py plan # needs to be implemented
 ```
 
 ```bash
