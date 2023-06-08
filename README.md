@@ -52,7 +52,7 @@ python3 biform.py apply
 
 ### Scaffolding
 
-```
+```bash
 └── /
   ├── biform.py # Contains the main logic of the application
   ├── README.md # Contains the documentation of the application
