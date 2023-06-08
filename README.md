@@ -53,23 +53,23 @@ python3 biform.py apply
 ### Scaffolding
 
 ```
-└── bf/
-		├── main.py
-		├── state.json
-		├── config.json
-		├── README.md
-		└── applications/
-		        ├── app-id-1/
-		            ├── frontend/
-		            │   ├── objects.json
-		            │   ├── measures.json
-		            │   ├── dimensions.json
-		            │   └── ...
-		            ├── backend/
-		            │   ├── scripts.json
-		            │   ├── connections.json
-		            │   └── ...
-		            └── main.py
+└── /
+  ├── biform.py
+  ├── state.json
+  ├── config.json
+  ├── README.md
+  └── biforms/
+          ├── app-id-1/
+              ├── frontend/
+              │   ├── objects.json
+              │   ├── measures.json
+              │   ├── dimensions.json
+              │   └── ...
+              ├── backend/
+              │   ├── scripts.json
+              │   ├── connections.json
+              │   └── ...
+              └── main.py
 ```
 
 ## Built With
