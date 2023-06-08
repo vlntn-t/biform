@@ -1,6 +1,6 @@
 # BIForm
 
-BIForm is a powerful CLI tool designed for managing BI applications and their configurations. It allows you to easily manage your BI applications and their configurations declaratively in a version control system (VCS) such as Git.
+BIForm is a powerful CLI tool designed for managing BI applications and their configurations declaratively in a version control system (VCS) such as Git.
 
 Currently, BIForm supports the following BI applications:
 
