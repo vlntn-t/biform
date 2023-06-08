@@ -57,9 +57,9 @@ python3 biform.py apply
   ├── biform.py # Contains the main logic of the application
   ├── README.md # Contains the documentation of the application
   └── biforms/
-          ├── state.json
-          ├── config.json
-          ├── README.md
+          ├── state.json # Contains the state of the application
+          ├── config.json # Contains the configuration of the application (e.g. Qlik Sense Cloud API key and tenant)
+          ├── README.md # Contains the documentation of the application
           └── app-id-1/
               ├── frontend/
               │   ├── objects.json
