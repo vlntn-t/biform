@@ -54,11 +54,12 @@ python3 biform.py apply
 
 ```
 └── /
-  ├── biform.py
-  ├── README.md
+  ├── biform.py # Contains the main logic of the application
+  ├── README.md # Contains the documentation of the application
   └── biforms/
           ├── state.json
           ├── config.json
+          ├── README.md
           └── app-id-1/
               ├── frontend/
               │   ├── objects.json
@@ -69,7 +70,6 @@ python3 biform.py apply
                   ├── scripts.json
                   ├── connections.json
                   └── ...
-
 ```
 
 ## Built With
