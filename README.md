@@ -55,21 +55,21 @@ python3 biform.py apply
 ```
 └── /
   ├── biform.py
-  ├── state.json
-  ├── config.json
   ├── README.md
   └── biforms/
-          ├── app-id-1/
+          ├── state.json
+          ├── config.json
+          └── app-id-1/
               ├── frontend/
               │   ├── objects.json
               │   ├── measures.json
               │   ├── dimensions.json
               │   └── ...
-              ├── backend/
-              │   ├── scripts.json
-              │   ├── connections.json
-              │   └── ...
-              └── main.py
+              └── backend/
+                  ├── scripts.json
+                  ├── connections.json
+                  └── ...
+
 ```
 
 ## Built With
