@@ -271,28 +271,28 @@ def apply_project():
 
         # qlik app measure set ./my-measures-glob-path.json
         os.system(
-            f'qlik app measure set ./biforms/{app_id}/measures.json --app {app_id}')
+            f'qlik app measure set ./biforms/{app_id}/frontend/measures.json --app {app_id}')
 
         # Apply all dimensions for each app
         print(f'Applying master dimensions for app {app_id}')
 
         # qlik app dimension set ./my-dimensions-glob-path.json
         os.system(
-            f'qlik app dimension set ./biforms/{app_id}/dimensions.json --app {app_id}')
+            f'qlik app dimension set ./biforms/{app_id}/frontend//dimensions.json --app {app_id}')
 
         # Apply all variables for each app
         print(f'Applying variables for app {app_id}')
 
         # qlik app variable set ./my-variables-glob-path.json
         os.system(
-            f'qlik app variable set ./biforms/{app_id}/variables.json --app {app_id}')
+            f'qlik app variable set ./biforms/{app_id}/frontend//variables.json --app {app_id}')
 
         # Apply the script for each app
         print(f'Applying script for app {app_id}')
 
         # qlik app script set ./my-script-glob-path.qvs (qlik app script set <path-to-script-file.qvs>)
         os.system(
-            f'qlik app script set ./biforms/{app_id}/script.qvs --app {app_id}')
+            f'qlik app script set ./biforms/{app_id}/backend//script.qvs --app {app_id}')
 
 
 init_parser.set_defaults(func=init_project)
