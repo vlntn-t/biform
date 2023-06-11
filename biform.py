@@ -14,7 +14,8 @@ parser = argparse.ArgumentParser(
 subparsers = parser.add_subparsers(dest='command')
 
 # Add "init" command
-init_parser = subparsers.add_parser('init', help='Initialize the project')
+init_parser = subparsers.add_parser(
+    'init', help='Initialize the project')
 
 # Add "pull" command
 pull_parser = subparsers.add_parser(
@@ -91,25 +92,37 @@ def init_project():
             # qlik context ls
             os.system('qlik context ls')
             # Create biforms folder
-            os.mkdir('biforms')
+            if not os.path.exists('biforms'):
+                os.mkdir('biforms')
+            else:
+                print('biforms folder already exists')
             # Create state.json
-            with open('biforms/state.json', 'w') as f:
-                json.dump({
-                    'version': 1
-                }, f, indent=2)
+            if not os.path.exists('biforms/state.json'):
+                with open('biforms/state.json', 'w') as f:
+                    json.dump({
+                        'version': 1
+                    }, f, indent=2)
+            else:
+                print('state.json already exists')
 
             # Create README.md for documentation purposes
-            with open('biforms/README.md', 'w') as f:
-                f.write("# Project Title\n\nProject description")
+            if not os.path.exists('biforms/README.md'):
+                with open('biforms/README.md', 'w') as f:
+                    f.write("# Project Title\n\nProject description")
+            else:
+                print('README.md already exists')
 
             # Create config.json with placeholders
-            config = {
-                'TENANT': 'https://<tenant>.<region>.qlikcloud.com',
-                'API_KEY': 'YOUR_API_KEY',
-                'APP_IDS': ['YOUR_APP_ID_1', 'YOUR_APP_ID_2']
-            }
-            with open('biforms/config.json', 'w') as f:
-                json.dump(config, f, indent=2)
+            if not os.path.exists('biforms/config.json'):
+                config = {
+                    'TENANT': 'https://<tenant>.<region>.qlikcloud.com',
+                    'API_KEY': 'YOUR_API_KEY',
+                    'APP_IDS': ['YOUR_APP_ID_1', 'YOUR_APP_ID_2']
+                }
+                with open('biforms/config.json', 'w') as f:
+                    json.dump(config, f, indent=2)
+            else:
+                print('config.json already exists')
 
         else:
             print('Qlik CLI is not installed. Please install it from https://github.com/qlik-oss/qlik-cli/releases')
