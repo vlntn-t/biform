@@ -41,13 +41,15 @@ def init_project():
             print('qlik cli is already installed')
             print(' ')
 
-        # qlik context init to set up the context
-        os.system('qlik context init')
-        # TODO: check if context is already set up
-        # TODO: get tenant and api key from user input and store in config.json
-
-        # qlik context ls
-        os.system('qlik context ls')
+        # chekc if qlik context is already set up
+        if os.system('qlik context ls') != 0:
+            # qlik context init to set up the context
+            os.system('qlik context init')
+        else:
+            print('qlik context is already set up')
+            print(' ')
+            # qlik context ls
+            os.system('qlik context ls')
 
         # Create biforms folder
         if not os.path.exists('biforms'):
