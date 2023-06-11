@@ -135,15 +135,20 @@ def pull_project():
     with open('biforms/config.json', 'r') as f:
         config = json.load(f)
 
-    # Pull all measures for each app
     for app_id in config['APP_IDS']:
-        print(f'Pulling master measures for app {app_id}')
         # Create a folder for each app if it doesn't exist
         if not os.path.exists(f'biforms/{app_id}'):
             os.mkdir(f'biforms/{app_id}')
             os.mkdir(f'biforms/{app_id}/frontend')
             os.mkdir(f'biforms/{app_id}/backend')
 
+        # Export the QS apps to respective folders
+        # qlik app export <appId> [flags]
+        print(f'Pulling app {app_id}')
+        os.system(
+            f'cd biforms/{app_id} && qlik app export {app_id} > {app_id}.qvf')
+
+        print(f'Pulling master measures for app {app_id}')
         # qlik app measure ls --app <appid/app_name> and store the table in a variable
         measures = os.popen(
             f'qlik app measure ls --app {app_id} --json').read()
