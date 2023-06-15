@@ -72,7 +72,9 @@ def pull_project():
         # Create a folder for each app if it doesn't exist
         if not os.path.exists(f'biforms/{app_id}'):
             os.mkdir(f'biforms/{app_id}')
+        if not os.path.exists(f'biforms/{app_id}/frontend'):
             os.mkdir(f'biforms/{app_id}/frontend')
+        if not os.path.exists(f'biforms/{app_id}/backend'):
             os.mkdir(f'biforms/{app_id}/backend')
 
         # Export the QS apps to respective folders
@@ -159,6 +161,34 @@ def pull_project():
         # Save all variable properties in a JSON file
         with open(f'biforms/{app_id}/frontend/variables.json', 'w') as f:
             json.dump(all_variable_properties, f, indent=2)
+
+        # Pull all sheets for each app
+        print(f'Pulling sheets for app {app_id}')
+        # qlik app object ls --app <appid/app_name> and store the table in a variable
+        objects = os.popen(
+            f'qlik app object ls --app {app_id} --json').read()
+        # print(objects)
+
+        # Parse the JSON response
+        objects = json.loads(objects)
+
+        # Create a list to store all sheet properties
+        all_sheet_properties = []
+
+        # Extract the object ids from the JSON where qType is "sheet"
+        sheet_ids = [item["qId"]
+                     for item in objects if item["qType"] == "sheet"]
+
+        # Get the sheet properties for each object id and append to the list
+        for sheet_id in sheet_ids:
+            sheet_properties = os.popen(
+                f'qlik app object properties {sheet_id} --app {app_id} --json').read()
+            sheet_properties_json = json.loads(sheet_properties)
+            all_sheet_properties.append(sheet_properties_json)
+
+        # Save all sheet properties in a JSON file
+        with open(f'biforms/{app_id}/frontend/sheets.json', 'w') as f:
+            json.dump(all_sheet_properties, f, indent=2)
 
         # Pull the script for each app (qlik app script get --app <appid/app_name>)
         print(f'Pulling script for app {app_id}')
