@@ -27,107 +27,40 @@ apply_parser = subparsers.add_parser(
 
 
 def init_project():
-    if os.name == 'posix':  # macOS or Linux
-        if os.system('brew -v') != 0:
-            os.system(
-                '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
-        else:
-            print('brew is already installed')
-            print(' ')
+    # Create biforms folder
+    if not os.path.exists('biforms'):
+        os.mkdir('biforms')
+    else:
+        print('./biforms folder already exists')
 
-        if os.system('qlik version') != 0:
-            os.system('brew tap qlik-oss/taps && brew install qlik-cli')
-        else:
-            print('qlik cli is already installed')
-            print(' ')
+    # Create state.json
+    if not os.path.exists('biforms/state.json'):
+        with open('biforms/state.json', 'w') as f:
+            json.dump({
+                'version': 1
+            }, f, indent=2)
+    else:
+        print('state.json already exists')
 
-        # chekc if qlik context is already set up
-        if os.system('qlik context ls') != 0:
-            # qlik context init to set up the context
-            os.system('qlik context init')
-        else:
-            print('qlik context is already set up')
-            print(' ')
-            # qlik context ls
-            os.system('qlik context ls')
+    # Create README.md for documentation purposes
+    if not os.path.exists('biforms/README.md'):
+        with open('biforms/README.md', 'w') as f:
+            f.write("# Project Title\n\nProject description")
+    else:
+        print('README.md already exists')
 
-        # Create biforms folder
-        if not os.path.exists('biforms'):
-            os.mkdir('biforms')
-        else:
-            print('biforms folder already exists')
+    # Create config.json with placeholders if it doesn't exist
+    config = {
+        'TENANT': 'https://<tenant>.<region>.qlikcloud.com',
+        'API_KEY': 'YOUR_API_KEY',
+        'APP_IDS': ['YOUR_APP_ID_1', 'YOUR_APP_ID_2']
+    }
 
-        # Create state.json
-        if not os.path.exists('biforms/state.json'):
-            with open('biforms/state.json', 'w') as f:
-                json.dump({
-                    'version': 1
-                }, f, indent=2)
-        else:
-            print('state.json already exists')
-
-        # Create README.md for documentation purposes
-        if not os.path.exists('biforms/README.md'):
-            with open('biforms/README.md', 'w') as f:
-                f.write("# Project Title\n\nProject description")
-        else:
-            print('README.md already exists')
-
-        # Create config.json with placeholders if it doesn't exist
-        config = {
-            'TENANT': 'https://<tenant>.<region>.qlikcloud.com',
-            'API_KEY': 'YOUR_API_KEY',
-            'APP_IDS': ['YOUR_APP_ID_1', 'YOUR_APP_ID_2']
-        }
-
-        if not os.path.exists('biforms/config.json'):
-            with open('biforms/config.json', 'w') as f:
-                json.dump(config, f, indent=2)
-        else:
-            print('config.json already exists')
-
-    elif os.name == 'nt':  # Windows
-        # check if qlik cli is installed
-        if os.system('qlik version') != 0:
-            # qlik context init to set up the context
-            os.system('qlik context init')
-            # qlik context ls
-            os.system('qlik context ls')
-            # Create biforms folder
-            if not os.path.exists('biforms'):
-                os.mkdir('biforms')
-            else:
-                print('biforms folder already exists')
-            # Create state.json
-            if not os.path.exists('biforms/state.json'):
-                with open('biforms/state.json', 'w') as f:
-                    json.dump({
-                        'version': 1
-                    }, f, indent=2)
-            else:
-                print('state.json already exists')
-
-            # Create README.md for documentation purposes
-            if not os.path.exists('biforms/README.md'):
-                with open('biforms/README.md', 'w') as f:
-                    f.write("# Project Title\n\nProject description")
-            else:
-                print('README.md already exists')
-
-            # Create config.json with placeholders
-            if not os.path.exists('biforms/config.json'):
-                config = {
-                    'TENANT': 'https://<tenant>.<region>.qlikcloud.com',
-                    'API_KEY': 'YOUR_API_KEY',
-                    'APP_IDS': ['YOUR_APP_ID_1', 'YOUR_APP_ID_2']
-                }
-                with open('biforms/config.json', 'w') as f:
-                    json.dump(config, f, indent=2)
-            else:
-                print('config.json already exists')
-
-        else:
-            print('Qlik CLI is not installed. Please install it from https://github.com/qlik-oss/qlik-cli/releases')
+    if not os.path.exists('biforms/config.json'):
+        with open('biforms/config.json', 'w') as f:
+            json.dump(config, f, indent=2)
+    else:
+        print('config.json already exists')
 
 
 def pull_project():
@@ -238,6 +171,15 @@ def pull_project():
 
 
 def apply_project():
+    # prompt user to confirm
+    print('Are you sure you want to apply the project?')
+    print('This will overwrite the master measures, dimensions, variables and script in all defined QS apps')
+    print('Type "yes" to continue')
+    confirmation = input()
+    if confirmation != 'yes':
+        print('Exiting...')
+        exit()
+
     # Read config.json
     with open('biforms/config.json', 'r') as f:
         config = json.load(f)
