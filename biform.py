@@ -79,7 +79,7 @@ def pull_project():
         # qlik app export <appId> [flags]
         print(f'Pulling app {app_id}')
         os.system(
-            f'cd biforms/{app_id} && qlik app export {app_id} > {app_id}.qvf')
+            f'cd biforms/{app_id} && qlik app export {app_id} --NoData > {app_id}.qvf')
 
         print(f'Pulling master measures for app {app_id}')
         # qlik app measure ls --app <appid/app_name> and store the table in a variable
