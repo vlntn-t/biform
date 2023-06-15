@@ -20,9 +20,9 @@ Follow the instructions below to get a copy of the project running on your local
 - Version Control such as GitHub or GitLab _(optional)_
 - Python 3.6 or higher installed on your local machine
 
-#### Windows
+#### Intsalling Qlik CLI
 
-- Install the Qlik CLI manually: https://github.com/qlik-oss/qlik-cli/releases
+- Follow the instructions [here](https://qlik.dev/toolkits/qlik-cli/install-qlik-cli) to install Qlik CLI
 
 ### Installing
 
@@ -33,7 +33,7 @@ To install and run the project, open your terminal and enter the following comma
 python3 biform.py init
 ```
 
-Add all the required information to the **`config.json`** file.
+Add all the required information to the newly created **`config.json`** file.
 
 ```bash
 # To pull the latest changes from the remote repository
