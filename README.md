@@ -11,7 +11,7 @@ Follow the instructions below to get a copy of the project running on your local
 - A Qlik Sense Cloud tenant: You can get a free trail [here](https://www.qlik.com/us/products/qlik-cloud)
 - Qlik Sense Cloud API key
   - Profile Settings > API keys
-- Version Control such as GitHub or GitLab _(optional)_
+- Version Control such as [GitHub](https://github.com/) or [GitLab](https://about.gitlab.com/) _(optional)_
 - Python 3.6 or higher installed on your local machine
 
 #### Intsalling Qlik CLI
