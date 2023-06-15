@@ -1,12 +1,6 @@
 # BIForm
 
-BIForm is a powerful CLI tool designed for managing BI applications and their configurations declaratively in a version control system (VCS) such as Git.
-
-Currently, BIForm supports the following BI applications:
-
-- [x] [Qlik Sense](https://www.qlik.com/us/products/qlik-sense)
-- [ ] [Microsoft Power BI](https://powerbi.microsoft.com/)
-- [ ] [Tableau](https://www.tableau.com/)
+BIForm is a powerful CLI tool designed for managing Qlik Sense BI applications and their configurations declaratively in a version control system (VCS) such as Git.
 
 ## Getting Started
 
