@@ -8,22 +8,21 @@ import json
 import os
 import asyncio
 
-# Initialize the parser
 parser = argparse.ArgumentParser(
     prog='BIForm CLI', description='Your CLI tool for programmatically managing BI apps')
 subparsers = parser.add_subparsers(dest='command')
 
-# Add "init" command
 init_parser = subparsers.add_parser(
     'init', help='Initialize the project')
 
-# Add "pull" command
 pull_parser = subparsers.add_parser(
     'pull', help='Pull all metadata for specified apps from Qlik Sense API')
 
-# Add "apply" command
 apply_parser = subparsers.add_parser(
     'apply', help='Apply all metadata from JSON files to specified apps')
+
+plan_parser = subparsers.add_parser(
+    'plan', help='Show a diff between the current state and the desired state')
 
 
 def init_project():
@@ -97,6 +96,8 @@ def pull_project():
         # Extract the measure ids from the JSON
         measure_ids = [item["qId"] for item in measures]
 
+        measure_count = len(measure_ids)
+
         # Get the measure properties for each measure id and append to the list
         for measure_id in measure_ids:
             measure_properties = os.popen(
@@ -104,6 +105,8 @@ def pull_project():
             # print(measure_properties)
             measure_properties_json = json.loads(measure_properties)
             all_measure_properties.append(measure_properties_json)
+            print(
+                f'Progress: {measure_ids.index(measure_id)+1}/{measure_count}', end='\r')
 
         # Save all measure properties in a JSON file
         with open(f'biforms/{app_id}/frontend/measures.json', 'w') as f:
@@ -124,6 +127,8 @@ def pull_project():
         # Extract the dimension ids from the JSON
         dimension_ids = [item["qId"] for item in dimensions]
 
+        dimension_count = len(dimension_ids)
+
         # Get the dimension properties for each dimension id and append to the list
         for dimension_id in dimension_ids:
             dimension_properties = os.popen(
@@ -131,6 +136,8 @@ def pull_project():
             # print(dimension_properties)
             dimension_properties_json = json.loads(dimension_properties)
             all_dimension_properties.append(dimension_properties_json)
+            print(
+                f'Progress: {dimension_ids.index(dimension_id)+1}/{dimension_count}', end='\r')
 
         # Save all dimension properties in a JSON file
         with open(f'biforms/{app_id}/frontend/dimensions.json', 'w') as f:
@@ -151,12 +158,16 @@ def pull_project():
         # Extract the variable title from the JSON
         variable_titles = [item["title"] for item in variables]
 
+        variable_count = len(variable_titles)
+
         # Get the variable properties for each variable title and append to the list
         for variable_title in variable_titles:
             variable_properties = os.popen(
                 f'qlik app variable properties {variable_title} --app {app_id} --json').read()
             variable_properties_json = json.loads(variable_properties)
             all_variable_properties.append(variable_properties_json)
+            print(
+                f'Progress: {variable_titles.index(variable_title)+1}/{variable_count}', end='\r')
 
         # Save all variable properties in a JSON file
         with open(f'biforms/{app_id}/frontend/variables.json', 'w') as f:
@@ -179,12 +190,16 @@ def pull_project():
         sheet_ids = [item["qId"]
                      for item in objects if item["qType"] == "sheet"]
 
+        sheet_count = len(sheet_ids)
+
         # Get the sheet properties for each object id and append to the list
         for sheet_id in sheet_ids:
             sheet_properties = os.popen(
                 f'qlik app object properties {sheet_id} --app {app_id} --json').read()
             sheet_properties_json = json.loads(sheet_properties)
             all_sheet_properties.append(sheet_properties_json)
+            print(
+                f'Progress: {sheet_ids.index(sheet_id)+1}/{sheet_count}', end='\r')
 
         # Save all sheet properties in a JSON file
         with open(f'biforms/{app_id}/frontend/sheets.json', 'w') as f:
@@ -198,6 +213,19 @@ def pull_project():
         # Save the script in a txt file
         with open(f'biforms/{app_id}/backend/script.qvs', 'w') as f:
             f.write(script)
+
+
+def plan_project():
+    with open('biforms/config.json', 'r') as f:
+        config = json.load(f)
+
+    # for app_id in config['APP_IDS']:
+    #     # Get the JSON data for all measures
+    #     with open(f'biforms/{app_id}/frontend/measures.json', 'r') as f:
+    #         measures = json.load(f)
+    #     # Pull the measure JSON from the app in Qlik Sense
+    #     measures_qlik = os.popen(
+    #         f'qlik app measure ls --app {app_id} --json').read()
 
 
 def apply_project():
@@ -289,6 +317,7 @@ def apply_project():
 
 init_parser.set_defaults(func=init_project)
 pull_parser.set_defaults(func=pull_project)
+plan_parser.set_defaults(func=plan_project)
 apply_parser.set_defaults(func=apply_project)
 
 # Parse the arguments
