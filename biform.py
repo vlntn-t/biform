@@ -41,13 +41,6 @@ def init_project():
     else:
         print('state.json already exists')
 
-    # Create README.md for documentation purposes
-    if not os.path.exists('biforms/README.md'):
-        with open('biforms/README.md', 'w') as f:
-            f.write("# Project Title\n\nProject description")
-    else:
-        print('README.md already exists')
-
     if not os.path.exists('biforms/apps.json'):
         # Create apps.json with placeholders if it doesn't exist
         config = {
@@ -89,6 +82,18 @@ def pull_project():
         print(f'Pulling app {app_id}')
         os.system(
             f'cd biforms/{app_id} && qlik app export {app_id} --NoData > {app_id}.qvf && qlik app unbuild --app {app_id}')
+
+        # Get the apps folder name
+        app_folder = os.listdir(f'biforms/{app_id}')[1]
+
+        # Remove the '-unbuild' suffix from the folder name
+        app_name = app_folder.replace('-unbuild', '')
+
+        # Create README.md for documentation purposes
+        if not os.path.exists(f'biforms/{app_id}/README.md'):
+            with open(f'biforms/{app_id}//README.md', 'w') as f:
+                f.write(
+                    F"# {app_name}\n\nYou can write the apps documentation here.")
 
 
 def plan_project():
