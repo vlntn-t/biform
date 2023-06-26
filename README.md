@@ -23,7 +23,7 @@ Follow the instructions below to get a copy of the project running on your local
 To install and run the project, open your terminal and enter the following commands:
 
 ```bash
-# To initialize the project
+# To initialize the project (will create all the required files and folders)
 python3 biform.py init
 ```
 
@@ -41,7 +41,7 @@ python3 biform.py plan # needs to be implemented
 
 ```bash
 # To apply the changes to the remote repository
-python3 biform.py apply
+python3 biform.py apply # currently works for master measures, dimensions, variables, and the script
 ```
 
 ### Scaffolding
