@@ -97,16 +97,7 @@ def pull_project():
 
 
 def plan_project():
-    with open('biforms/apps.json', 'r') as f:
-        config = json.load(f)
-
-    # for app_id in config['APP_IDS']:
-    #     # Get the JSON data for all measures
-    #     with open(f'biforms/{app_id}/frontend/measures.json', 'r') as f:
-    #         measures = json.load(f)
-    #     # Pull the measure JSON from the app in Qlik Sense
-    #     measures_qlik = os.popen(
-    #         f'qlik app measure ls --app {app_id} --json').read()
+    print('Not implemented yet. You can contribute to this project at: https://github.com/vlntn-t/biform')
 
 
 def apply_project():
