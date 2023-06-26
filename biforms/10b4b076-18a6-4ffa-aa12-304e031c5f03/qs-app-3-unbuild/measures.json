@@ -1,0 +1,26 @@
+[
+  {
+    "qInfo": {
+      "qId": "xmVEH",
+      "qType": "measure"
+    },
+    "qMeasure": {
+      "qLabel": "Test Measure 1",
+      "qDef": "Count(City)",
+      "qGrouping": "N",
+      "qExpressions": [],
+      "qActiveExpression": 0,
+      "qNumFormat": {
+        "qType": "U",
+        "qnDec": 10,
+        "qUseThou": 0
+      },
+      "coloring": {}
+    },
+    "qMetaDef": {
+      "title": "Test Measure 1",
+      "description": "",
+      "tags": []
+    }
+  }
+]
