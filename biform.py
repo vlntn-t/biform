@@ -1,8 +1,3 @@
-# TODO: add python3 biform.py apply
-# should delete all objects (measures, dimensions, variables, etc.) in the app and apply the items from the JSON files
-# TODO: add python3 biform.py plan
-# should show a diff between the current state and the desired state
-
 import argparse
 import json
 import os
@@ -70,34 +65,51 @@ def pull_project():
         config = json.load(f)
 
     for app_id in config['APP_IDS']:
+        # Get the apps name (qlik app get {app_id})
+        app_name = os.popen(f'qlik app get {app_id}').read()
+        app_name = json.loads(app_name)["attributes"]["name"]
+        print(f'Pulling app {app_name} | {app_id}')
+
         # Remove the app folder if it exists
         if os.path.exists(f'biforms/{app_id}'):
-            os.system(f'rm -rf biforms/{app_id}')
+            if os.name == 'nt':
+                os.system(f'cd biforms && rmdir /s /q {app_id} && cd ..')
+            elif os.name == 'posix':
+                os.system(f'cd biforms && rm -rf {app_id} && cd ..')
+            else:
+                print('OS not supported')
+                exit()
 
         if not os.path.exists(f'biforms/{app_id}'):
             os.mkdir(f'biforms/{app_id}')
 
-        # Export the QS apps to respective folders
-        # qlik app export <appId> [flags]
-        print(f'Pulling app {app_id}')
-        os.system(
-            f'cd biforms/{app_id} && qlik app export {app_id} --NoData > {app_id}.qvf && qlik app unbuild --app {app_id}')
-
         # Get the apps folder name
-        app_folder = os.listdir(f'biforms/{app_id}')[1]
+        app_name_mod = app_name.lower()
+        app_name_mod = app_name_mod.replace(' ', '-').replace('.', '-')
+        folder_name = app_name_mod + '-unbuild'
 
-        # Remove the '-unbuild' suffix from the folder name
-        app_name = app_folder.replace('-unbuild', '')
-
-        # Create README.md for documentation purposes
-        if not os.path.exists(f'biforms/{app_id}/README.md'):
-            with open(f'biforms/{app_id}//README.md', 'w') as f:
-                f.write(
-                    F"# {app_name}\n\nYou can write the apps documentation here.")
+        # check which os is used and move the folder to the app folder
+        if os.name == 'nt':
+            os.system(
+                f'qlik app export {app_id} --NoData > biforms/{app_id}/{app_id}.qvf && qlik app unbuild --app {app_id} && move {folder_name} biforms/{app_id}')
+        elif os.name == 'posix':
+            os.system(
+                f'qlik app export {app_id} --NoData > biforms/{app_id}/{app_id}.qvf && qlik app unbuild --app {app_id} && mv {folder_name} biforms/{app_id}')
+        else:
+            print('OS not supported')
+            exit()
 
 
 def plan_project():
     print('Not implemented yet. You can contribute to this project at: https://github.com/vlntn-t/biform')
+
+    # for app_id in config['APP_IDS']:
+    #     # Get the JSON data for all measures
+    #     with open(f'biforms/{app_id}/frontend/measures.json', 'r') as f:
+    #         measures = json.load(f)
+    #     # Pull the measure JSON from the app in Qlik Sense
+    #     measures_qlik = os.popen(
+    #         f'qlik app measure ls --app {app_id} --json').read()
 
 
 def apply_project():

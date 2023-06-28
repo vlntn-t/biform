@@ -24,24 +24,29 @@ To install and run the project, open your terminal and enter the following comma
 
 ```bash
 # To initialize the project (will create all the required files and folders)
-python3 biform.py init
+python3 biform.py init # for Mac and Linux
+py biform.py init # for Windows
 ```
 
 Add all the required information to the newly created **`config.json`** file.
 
 ```bash
 # To pull the latest changes from the remote repository
-python3 biform.py pull
+python3 biform.py pull # for Mac and Linux
+py biform.py pull # for Windows
 ```
 
 ```bash
 # To compare the local and remote repositories
 python3 biform.py plan # needs to be implemented
+py biform.py plan # needs to be implemented
 ```
 
 ```bash
 # To apply the changes to the remote repository
-python3 biform.py apply # currently works for master measures, dimensions, variables, and the script
+# currently works for master measures, dimensions, variables, and the script
+python3 biform.py apply # for Mac and Linux
+py biform.py apply # for Windows
 ```
 
 ### Scaffolding
@@ -53,17 +58,23 @@ python3 biform.py apply # currently works for master measures, dimensions, varia
   └── biforms/
           ├── state.json # Contains the state of the application
           ├── config.json # Contains the configuration of the application (e.g. Qlik Sense Cloud API key and tenant)
-          ├── README.md # Contains the documentation of the application
           └── app-id-1/
-              ├── frontend/
-              │   ├── objects.json
-              │   ├── measures.json
-              │   ├── dimensions.json
-              │   └── ...
-              └── backend/
-                  ├── scripts.json
-                  ├── connections.json
-                  └── ...
+              ├── app.qvf # Contains the Qlik Sense application
+              └── app-unbuild/
+                  ├── app-properties.json
+                  ├── config.yml
+                  ├── connections.yml
+                  ├── dimensions.json
+                  ├── measures.json
+                  ├── script.qvs
+                  ├── variables.json
+                  └── objects/
+                    ├── appprops.json
+                    ├── loadmodel.json
+                    ├── sheet1
+                    ├── sheet2
+                    └── sheet3
+
 ```
 
 ## Built With
