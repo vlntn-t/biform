@@ -9,7 +9,7 @@ Follow the instructions below to get a copy of the project running on your local
 ### Prerequisites
 
 - A Qlik Sense Cloud tenant: You can get a free trail [here](https://www.qlik.com/us/products/qlik-cloud)
-- Qlik Sense Cloud API key
+- Qlik Sense Cloud API key 
   - Profile Settings > API keys
 - Version Control such as [GitHub](https://github.com/) or [GitLab](https://about.gitlab.com/) _(optional)_
 - Python 3.6 or higher installed on your local machine
@@ -28,7 +28,17 @@ python3 biform.py init # for Mac and Linux
 py biform.py init # for Windows
 ```
 
-Add all the required information to the newly created **`config.json`** file.
+Add the Qlik Sense app ids to the newly created **`config.json`** file.
+  
+  ```json
+  {
+  "APP_IDS": [
+      "YOUR_QLIK_CLOUD_APP_ID_1",
+      "YOUR_QLIK_CLOUD_APP_ID_2"
+  ]
+}
+```
+You can find the app ids in the URL of the Qlik Sense Cloud app. E.g. https://cloud.qlik.com/sense/app/<APP_ID>/sheet/<SHEET_ID>/state/analysis
 
 ```bash
 # To pull the latest changes from the remote repository
@@ -74,8 +84,19 @@ py biform.py apply # for Windows
                     ├── sheet1
                     ├── sheet2
                     └── sheet3
-
 ```
+
+## Contributing
+
+We welcome contributions from the community! If you'd like to contribute to the project, please follow these steps:
+
+1. Fork the repository on GitHub.
+2. Create a new branch for your changes.
+3. Make your changes and commit them with clear commit messages.
+4. Push your changes to your fork.
+5. Submit a pull request to the main repository.
+
+We'll review your changes and work with you to get them merged into the project.
 
 ## Built With
 
