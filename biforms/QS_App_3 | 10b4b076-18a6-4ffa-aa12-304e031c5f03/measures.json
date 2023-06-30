@@ -5,7 +5,7 @@
       "qType": "measure"
     },
     "qMeasure": {
-      "qLabel": "Test Measure 1",
+      "qLabel": "Test Measure 1.1",
       "qDef": "Count(City)",
       "qGrouping": "N",
       "qExpressions": [],
@@ -18,7 +18,7 @@
       "coloring": {}
     },
     "qMetaDef": {
-      "title": "Test Measure 1",
+      "title": "Test Measure 1.1",
       "description": "",
       "tags": []
     }

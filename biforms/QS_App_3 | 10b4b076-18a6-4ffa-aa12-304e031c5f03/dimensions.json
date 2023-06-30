@@ -1,0 +1,27 @@
+[
+  {
+    "qInfo": {
+      "qId": "QGLbWB",
+      "qType": "dimension"
+    },
+    "qDim": {
+      "qGrouping": "N",
+      "qFieldDefs": [
+        "Age"
+      ],
+      "qFieldLabels": [
+        "Age"
+      ],
+      "title": "Age",
+      "coloring": {
+        "changeHash": "0.9747882512286179",
+        "hasValueColors": false
+      }
+    },
+    "qMetaDef": {
+      "title": "Age",
+      "description": "",
+      "tags": []
+    }
+  }
+]

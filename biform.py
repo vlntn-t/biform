@@ -65,40 +65,38 @@ def pull_project():
         config = json.load(f)
 
     for app_id in config['APP_IDS']:
-        # Get the apps name (qlik app get {app_id})
+
+        # Get the apps name (qlik app get {app_id}) 
         app_name = os.popen(f'qlik app get {app_id}').read()
         app_name = json.loads(app_name)["attributes"]["name"]
         print(f'Pulling app {app_name} | {app_id}')
 
-        # Remove the app folder if it exists
-        if os.path.exists(f'biforms/{app_id}'):
+        app_name_mod = app_name.replace(' ', '_')
+
+        # Remove the app folder if it exists 
+        if os.path.exists(f'biforms/{app_name_mod} | {app_id}'):
             if os.name == 'nt':
-                os.system(f'cd biforms && rmdir /s /q {app_id} && cd ..')
+                os.system(f'cd biforms && rmdir /s /q "{app_name_mod} | {app_id}" && cd ..')
             elif os.name == 'posix':
-                os.system(f'cd biforms && rm -rf {app_id} && cd ..')
+                os.system(f'cd biforms && rm -rf "{app_name_mod} | {app_id}" && cd ..')
             else:
                 print('OS not supported')
                 exit()
 
-        if not os.path.exists(f'biforms/{app_id}'):
-            os.mkdir(f'biforms/{app_id}')
-
-        # Get the apps folder name
-        app_name_mod = app_name.lower()
-        app_name_mod = app_name_mod.replace(' ', '-').replace('.', '-')
-        folder_name = app_name_mod + '-unbuild'
-
+        if not os.path.exists(f'biforms/{app_name_mod} | {app_id}'):
+            os.mkdir(f'biforms/{app_name_mod} | {app_id}')
+        
+        
         # check which os is used and move the folder to the app folder
         if os.name == 'nt':
             os.system(
-                f'qlik app export {app_id} --NoData > biforms/{app_id}/{app_id}.qvf && qlik app unbuild --app {app_id} && move {folder_name} biforms/{app_id}')
+                f'qlik app export {app_id} --NoData > biforms/"{app_name_mod} | {app_id}"/{app_name_mod}.qvf && qlik app unbuild --app {app_id} --dir "biforms/{app_name_mod} | {app_id}/"')
         elif os.name == 'posix':
             os.system(
-                f'qlik app export {app_id} --NoData > biforms/{app_id}/{app_id}.qvf && qlik app unbuild --app {app_id} && mv {folder_name} biforms/{app_id}')
+                f'qlik app export {app_id} --NoData > biforms/"{app_name_mod} | {app_id}"/{app_name_mod}.qvf && qlik app unbuild --app {app_id} --dir "biforms/{app_name_mod} | {app_id}/"')
         else:
             print('OS not supported')
             exit()
-
 
 def plan_project():
     print('Not implemented yet. You can contribute to this project at: https://github.com/vlntn-t/biform')
@@ -122,24 +120,21 @@ def apply_project():
         print('Exiting...')
         exit()
 
-    # Read apps.json
+# Read apps.json
     with open('biforms/apps.json', 'r') as f:
         config = json.load(f)
 
     for app_id in config['APP_IDS']:
 
-        # Get the apps folder name
-        app_folder = os.listdir(f'biforms/{app_id}')[1]
+        # Get the apps name (qlik app get {app_id}) 
+        app_name = os.popen(f'qlik app get {app_id}').read()
+        app_name = json.loads(app_name)["attributes"]["name"]
+        print(f'Applying changes to {app_name} | {app_id}')
 
-        # Remove the '-unbuild' suffix from the folder name
-        app_name = app_folder.replace('-unbuild', '')
+        app_name_mod = app_name.replace(' ', '_')
 
-        # Build the app (qlik app build)
-        print(f'Building app {app_name} | {app_id}')
-
-        # cd into the app folder and then into the apps *-unbuild folder
         os.system(
-            f'cd biforms/{app_id} && cd {app_folder} && qlik app build --app {app_id} --connections ./connections.yml --dimensions ./dimensions.json --measures ./measures.json --variables ./variables.json --script ./script.qvs --objects ')
+            f'cd biforms/"{app_name_mod} | {app_id}" && qlik app build --app {app_id} --connections ./connections.yml --dimensions ./dimensions.json --measures ./measures.json --variables ./variables.json --script ./script.qvs')
 
 
 init_parser.set_defaults(func=init_project)
