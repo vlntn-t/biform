@@ -59,8 +59,8 @@ py biform.py apply # for Windows
           ├── state.json # Contains the state of the application
           ├── config.json # Contains the configuration of the application (e.g. Qlik Sense Cloud API key and tenant)
           └── app-id-1/
-              ├── app.qvf # Contains the Qlik Sense application
               └── app-unbuild/
+                  ├── app.qvf # Contains the Qlik Sense application
                   ├── app-properties.json
                   ├── config.yml
                   ├── connections.yml
