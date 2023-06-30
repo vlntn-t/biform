@@ -21,13 +21,11 @@ plan_parser = subparsers.add_parser(
 
 
 def init_project():
-    # Create biforms folder
     if not os.path.exists('biforms'):
         os.mkdir('biforms')
     else:
         print('./biforms folder already exists')
 
-    # Create state.json
     if not os.path.exists('biforms/state.json'):
         with open('biforms/state.json', 'w') as f:
             json.dump({
@@ -37,10 +35,7 @@ def init_project():
         print('state.json already exists')
 
     if not os.path.exists('biforms/apps.json'):
-        # Create apps.json with placeholders if it doesn't exist
         config = {
-            # 'TENANT': 'https://<tenant>.<region>.qlikcloud.com',
-            # 'API_KEY': 'YOUR_API_KEY',
             'APP_IDS': ['YOUR_APP_ID_1', 'YOUR_APP_ID_2']
         }
 
@@ -51,7 +46,6 @@ def init_project():
 
 
 def pull_project():
-    # prompt user to confirm
     print('Are you sure you want to pull the project?')
     print('This will overwrite the all configurations such as master measures, dimensions, variables and script in all defined QS apps')
     print('Type "yes" to continue')
@@ -60,20 +54,17 @@ def pull_project():
         print('Exiting...')
         exit()
 
-    # Read apps.json
     with open('biforms/apps.json', 'r') as f:
         config = json.load(f)
 
     for app_id in config['APP_IDS']:
 
-        # Get the apps name (qlik app get {app_id}) 
         app_name = os.popen(f'qlik app get {app_id}').read()
         app_name = json.loads(app_name)["attributes"]["name"]
         print(f'Pulling app {app_name} | {app_id}')
 
         app_name_mod = app_name.replace(' ', '_')
 
-        # Remove the app folder if it exists 
         if os.path.exists(f'biforms/{app_name_mod} | {app_id}'):
             if os.name == 'nt':
                 os.system(f'cd biforms && rmdir /s /q "{app_name_mod} | {app_id}" && cd ..')
@@ -86,8 +77,6 @@ def pull_project():
         if not os.path.exists(f'biforms/{app_name_mod} | {app_id}'):
             os.mkdir(f'biforms/{app_name_mod} | {app_id}')
         
-        
-        # check which os is used and move the folder to the app folder
         if os.name == 'nt':
             os.system(
                 f'qlik app export {app_id} --NoData > biforms/"{app_name_mod} | {app_id}"/{app_name_mod}.qvf && qlik app unbuild --app {app_id} --dir "biforms/{app_name_mod} | {app_id}/"')
@@ -111,7 +100,6 @@ def plan_project():
 
 
 def apply_project():
-    # prompt user to confirm
     print('Are you sure you want to apply the project?')
     print('This will overwrite the master measures, dimensions, variables and script in all defined QS apps')
     print('Type "yes" to continue')
@@ -120,13 +108,11 @@ def apply_project():
         print('Exiting...')
         exit()
 
-# Read apps.json
     with open('biforms/apps.json', 'r') as f:
         config = json.load(f)
 
     for app_id in config['APP_IDS']:
 
-        # Get the apps name (qlik app get {app_id}) 
         app_name = os.popen(f'qlik app get {app_id}').read()
         app_name = json.loads(app_name)["attributes"]["name"]
         print(f'Applying changes to {app_name} | {app_id}')
@@ -142,7 +128,6 @@ pull_parser.set_defaults(func=pull_project)
 plan_parser.set_defaults(func=plan_project)
 apply_parser.set_defaults(func=apply_project)
 
-# Parse the arguments
 args = parser.parse_args()
 if args.command:
     loop = asyncio.get_event_loop()
