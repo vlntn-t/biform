@@ -4,7 +4,7 @@ BIForm is a powerful CLI tool designed for managing Qlik Sense BI applications a
 
 ## Getting Started
 
-Follow the instructions below to get a copy of the project running on your local machine for development and testing purposes.
+Follow the instructions below to get a copy of the project running on your local machine.
 
 ### Prerequisites
 
@@ -14,13 +14,13 @@ Follow the instructions below to get a copy of the project running on your local
 - Version Control such as [GitHub](https://github.com/) or [GitLab](https://about.gitlab.com/) _(optional)_
 - Python 3.6 or higher installed on your local machine
 
-#### Intsalling Qlik CLI
+#### Installing Qlik CLI
 
 - Follow the instructions [here](https://qlik.dev/toolkits/qlik-cli/install-qlik-cli) to install Qlik CLI
 
-### Installing
+### How it works
 
-To install and run the project, open your terminal and enter the following commands:
+To initialize and run the project, open your terminal in the projects folder and enter the following commands:
 
 ```bash
 # To initialize the project (will create all the required files and folders)
@@ -35,10 +35,10 @@ Add the Qlik Sense app ids to the newly created **`config.json`** file.
   "APP_IDS": [
       "YOUR_QLIK_CLOUD_APP_ID_1",
       "YOUR_QLIK_CLOUD_APP_ID_2"
-  ]
+      ]
 }
 ```
-You can find the app ids in the URL of the Qlik Sense Cloud app. E.g. https://cloud.qlik.com/sense/app/<APP_ID>/sheet/<SHEET_ID>/state/analysis
+You can find the app ids in the URL of the Qlik Sense Cloud app. E.g. ```https://cloud.qlik.com/sense/app/<APP_ID>/sheet/<SHEET_ID>/state/analysis```
 
 ```bash
 # To pull the latest changes from the remote repository
@@ -47,16 +47,16 @@ py biform.py pull # for Windows
 ```
 
 ```bash
-# To compare the local and remote repositories
-python3 biform.py plan # needs to be implemented
-py biform.py plan # needs to be implemented
-```
-
-```bash
 # To apply the changes to the remote repository
 # currently works for master measures, dimensions, variables, and the script
 python3 biform.py apply # for Mac and Linux
 py biform.py apply # for Windows
+```
+
+```bash
+# To compare the local and remote repositories
+python3 biform.py plan # needs to be implemented
+py biform.py plan # needs to be implemented
 ```
 
 ### Scaffolding
