@@ -2,6 +2,7 @@ import argparse
 import json
 import os
 import asyncio
+import datetime
 
 parser = argparse.ArgumentParser(
     prog='BIForm CLI', description='Your CLI tool for programmatically managing BI apps')
@@ -86,6 +87,15 @@ def pull_project():
         else:
             print('OS not supported')
             exit()
+
+    # Update state.json with the timestamp of the last pull and increase the version number by 1
+    with open('biforms/state.json', 'r') as f:
+        state = json.load(f)
+    state['last_pull'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    state['version'] += 1
+    with open('biforms/state.json', 'w') as f:
+        json.dump(state, f, indent=2)
+
 
 def plan_project():
     print('Not implemented yet. You can contribute to this project at: https://github.com/vlntn-t/biform')
