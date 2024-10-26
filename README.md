@@ -11,6 +11,7 @@ Follow the instructions below to get a copy of the project running on your local
 - A Qlik Sense Cloud tenant: You can get a free trail [here](https://www.qlik.com/us/products/qlik-cloud)
 - Qlik Sense Cloud API key 
   - Profile Settings > API keys
+- IDE such as [VS Code](https://code.visualstudio.com/)
 - Version Control such as [GitHub](https://github.com/) or [GitLab](https://about.gitlab.com/)
 - Python 3.6 or higher installed on your local machine
 
@@ -24,8 +25,7 @@ To initialize and run the project, open your terminal in the projects folder and
 
 ```bash
 # To initialize the project (will create all the required files and folders)
-python3 biform.py init # for Mac and Linux
-py biform.py init # for Windows
+python biform.py init # for Mac and Linux
 ```
 
 Add the Qlik Sense app ids to the newly created **`config.json`** file.
@@ -42,21 +42,13 @@ You can find the app ids in the URL of the Qlik Sense Cloud app. E.g. ```https:/
 
 ```bash
 # To pull the latest changes from the remote repository
-python3 biform.py pull # for Mac and Linux
-py biform.py pull # for Windows
+python biform.py pull # for Mac and Linux
 ```
 
 ```bash
-# To apply the changes to the remote repository
+# To apply any changes made locally
 # currently works for master measures, dimensions, variables, and the script
-python3 biform.py apply # for Mac and Linux
-py biform.py apply # for Windows
-```
-
-```bash
-# To compare the local and remote repositories
-python3 biform.py plan # needs to be implemented
-py biform.py plan # needs to be implemented
+python biform.py apply # for Mac and Linux
 ```
 
 ### Scaffolding
